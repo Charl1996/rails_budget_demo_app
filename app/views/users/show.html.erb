@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Budgets for <%= @user.email %></h1>
+<p>
+  <% if @budgets == [] %>
+    No budgets found for this user!
+  <% else %>
+    <% @budgets.each do |budget|%>
+      <p>
+        <%= link_to "#{budget.name}", "/budgets/#{budget.id}", method: :get %>
+      </p>
+    <% end %>
+  <% end %>
+</p>
+
+<p><%= link_to 'Create user budget', "#{@user.id}/budgets/new/", method: :get %></p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', url_for(:back) %>
